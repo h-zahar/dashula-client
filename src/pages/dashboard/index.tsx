@@ -2,7 +2,6 @@ import React from "react";
 import { Box, useTheme } from "@mui/material";
 
 type Props = NonNullable<unknown>;
-
 const gridTemplate = `
     "a b c"
     "a b c"
