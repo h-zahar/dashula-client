@@ -1,5 +1,8 @@
 import React from "react";
-import { Box, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import Segment1 from "@/pages/dashboard/segment1";
+import Segment2 from "@/pages/dashboard/segment2";
+import Segment3 from "@/pages/dashboard/segment3";
 
 type Props = NonNullable<unknown>;
 const gridTemplate = `
@@ -15,7 +18,41 @@ const gridTemplate = `
     "g h j"
 `;
 
+const gridTemplateSmall = `
+    "a"
+    "a"
+    "a"
+    "a"
+    "b"
+    "b"
+    "b"
+    "b"
+    "c"
+    "c"
+    "c"
+    "d"
+    "d"
+    "d"
+    "e"
+    "e"
+    "f"
+    "f"
+    "f"
+    "g"
+    "g"
+    "g"
+    "h"
+    "h"
+    "h"
+    "h"
+    "i"
+    "i"
+    "j"
+    "j"
+`;
+
 const Dashboard = (props: Props) => {
+  const isLargeScreen = useMediaQuery("(min-width: 1024px)");
   const { palette } = useTheme();
   return (
     <Box
@@ -23,22 +60,23 @@ const Dashboard = (props: Props) => {
       height="100%"
       display="grid"
       gap="1.5rem"
-      sx={{
-        gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
-        gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
-        gridTemplateAreas: gridTemplate,
-      }}
+      sx={
+        isLargeScreen
+          ? {
+              gridTemplateColumns: "repeat(3, minmax(300px, 1fr))",
+              gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
+              gridTemplateAreas: gridTemplate,
+            }
+          : {
+              gridAutoColumns: "1fr",
+              gridAutoRows: "100px",
+              gridTemplateAreas: gridTemplateSmall,
+            }
+      }
     >
-      <Box gridArea="a" sx={{ backgroundColor: palette.tertiary[500] }} />
-      <Box gridArea="b" sx={{ backgroundColor: palette.tertiary[500] }} />
-      <Box gridArea="c" sx={{ backgroundColor: palette.tertiary[500] }} />
-      <Box gridArea="d" sx={{ backgroundColor: palette.tertiary[500] }} />
-      <Box gridArea="e" sx={{ backgroundColor: palette.tertiary[500] }} />
-      <Box gridArea="f" sx={{ backgroundColor: palette.tertiary[500] }} />
-      <Box gridArea="g" sx={{ backgroundColor: palette.tertiary[500] }} />
-      <Box gridArea="h" sx={{ backgroundColor: palette.tertiary[500] }} />
-      <Box gridArea="i" sx={{ backgroundColor: palette.tertiary[500] }} />
-      <Box gridArea="j" sx={{ backgroundColor: palette.tertiary[500] }} />
+      <Segment1 />
+      <Segment2 />
+      <Segment3 />
     </Box>
   );
 };
