@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import FlexBetween from "@/components/utils/flexBetween";
 import PixIcon from "@mui/icons-material/Pix";
 
@@ -10,11 +10,13 @@ const Navbar = (props: Props) => {
   const { palette } = useTheme();
   const [active, setActive] = useState("dashboard");
 
+  const isLargeScreen = useMediaQuery("(min-width: 1024px)");
+
   return (
     <FlexBetween mb="1.25rem" p="0.5 rem 0" color={palette.grey[300]}>
       <FlexBetween gap="0.75rem">
         {/* <PixIcon sx={{ fontSize: "40px" }} /> */}
-        <Typography variant="h6" fontSize="30px">
+        <Typography variant="h6" fontSize={isLargeScreen ? "30px" : "18px"}>
           Logo
         </Typography>
         <Typography variant="h6" fontSize="16px">
