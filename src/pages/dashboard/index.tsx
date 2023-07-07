@@ -63,7 +63,7 @@ const Dashboard = (props: Props) => {
       sx={
         isLargeScreen
           ? {
-              gridTemplateColumns: "repeat(3, minmax(300px, 1fr))",
+              gridTemplateColumns: "repeat(3, minmax(350px, 1fr))",
               gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
               gridTemplateAreas: gridTemplate,
             }
